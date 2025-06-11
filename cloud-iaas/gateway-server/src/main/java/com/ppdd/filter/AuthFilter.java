@@ -12,10 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
-
-import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
@@ -64,7 +61,7 @@ public class AuthFilter implements GlobalFilter, Ordered {
         Result<Object> result = Result.error(BusinessEnum.UN_AUTHORIZED);
         //创建objectMapper
         ObjectMapper objectMapper = new ObjectMapper();
-        byte[] bytes = null;
+        byte[] bytes;
         try {
             bytes = objectMapper.writeValueAsBytes(result);
         } catch (JsonProcessingException e) {
