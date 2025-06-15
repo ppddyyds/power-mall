@@ -26,9 +26,10 @@
         <spring-cloud-alibaba.version>2023.0.1.0</spring-cloud-alibaba.version>
         <mybatis-plus.version>3.5.11</mybatis-plus.version>
         <mysql.version>8.0.33</mysql.version>
-        <druid.version>1.2.25</druid.version>
+        <druid.version>1.2.24</druid.version>
         <hutool.version>5.8.38</hutool.version>
         <springdoc.version>2.3.0</springdoc.version>
+        <fastjson.version>2.0.57</fastjson.version>
     </properties>
 
     <packaging>pom</packaging>
@@ -79,7 +80,7 @@
 <!--            druid连接池-->
             <dependency>
                 <groupId>com.alibaba</groupId>
-                <artifactId>druid-spring-boot-starter</artifactId>
+                <artifactId>druid-spring-boot-3-starter</artifactId>
                 <version>${druid.version}</version>
             </dependency>
 <!--            工具类库hutool-->

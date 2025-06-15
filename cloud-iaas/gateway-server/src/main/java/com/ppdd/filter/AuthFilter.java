@@ -34,7 +34,7 @@ public class AuthFilter implements GlobalFilter, Ordered {
         //获取请求路径
         String path = request.getPath().toString();
         //判断请求路径
-        if (whiteUrlsConfig.getUrls().contains(path)) {
+        if (whiteUrlsConfig.getWhiteList().contains(path)) {
             //包含在白名单中
             return chain.filter(exchange);
         }else {

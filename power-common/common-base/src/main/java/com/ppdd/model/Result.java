@@ -17,6 +17,12 @@ public class Result<T> {
     @Schema(description = "返回数据")
     private T data;
 
+    public static <T> Result<T> success(T data) {
+        return new Result<>(200, "", data);
+    }
+    public static <T> Result<T> success() {
+        return new Result<>(200,"操作成功",  null);
+    }
 
     public static <T> Result<T> error(Integer code, String msg, T data) {
         return new Result<>(code, msg, data);
@@ -24,4 +30,6 @@ public class Result<T> {
     public static <T> Result<T> error(BusinessEnum businessEnum) {
         return new Result<>(businessEnum.getCode(), businessEnum.getDesc(), null);
     }
+
+
 }

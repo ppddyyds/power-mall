@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: auth-server
+  config:
+    import: nacos:auth-server-${spring.profiles.active}.yml,nacos:application-${spring.profiles.active}.yml
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      discovery:
+        namespace: 56c7fa93-47cc-4635-86bd-ec095e0af244
+        group: A_GROUP
+        service: ${spring.application.name}
+      config:
+        namespace: 56c7fa93-47cc-4635-86bd-ec095e0af244
+        group: A_GROUP
+        prefix: ${spring.application.name}
+        file-extension: yml
+
+
+  profiles:
+    active: dev
+    #        =======nacos=========
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/mall?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+#    username: root
+#    password: hsj63628351
+#  data:
+#    redis:
+#      host: 127.0.0.1
+#      port: 6379
+#      password:
+#  mvc:
+#    pathmatch:
+#      matching-strategy: ant_path_matcher
+#    format:
+#      date: yyyy-MM-dd HH:mm:ss
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm:ss
+#    time-zone: GMT+8
+#mybatis-plus:
+#  mapper-locations: classpath*:/mapper/**/*.xml
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#server:
+#  port: 8100
+#
+#
