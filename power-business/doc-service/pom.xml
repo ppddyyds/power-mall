@@ -5,35 +5,25 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.ppdd</groupId>
-        <artifactId>power-mall</artifactId>
+        <artifactId>power-business</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>power-business</artifactId>
-    <modules>
-        <module>manager-service</module>
-        <module>doc-service</module>
-    </modules>
+    <artifactId>doc-service</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
-    <packaging>pom</packaging>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-common</artifactId>
         </dependency>
     </dependencies>
 </project>

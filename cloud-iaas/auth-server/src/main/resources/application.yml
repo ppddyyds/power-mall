@@ -15,8 +15,6 @@ spring:
         group: A_GROUP
         prefix: ${spring.application.name}
         file-extension: yml
-
-
   profiles:
     active: dev
     #        =======nacos=========
@@ -47,3 +45,12 @@ spring:
 #  port: 8100
 #
 #
+#springdoc:
+#  swagger-ui:
+#    urls:
+#      - name: 用户服务
+#        url: http://user-service/v3/api-docs
+#      - name: 订单服务
+#        url: http://order-service/v3/api-docs
+#      - name: 商品服务
+#        url: http://product-service/v3/api-docs

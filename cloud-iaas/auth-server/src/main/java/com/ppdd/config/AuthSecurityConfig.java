@@ -6,6 +6,8 @@ import com.ppdd.constants.BusinessEnum;
 import com.ppdd.constants.HttpConstants;
 import com.ppdd.domain.LoginResult;
 import com.ppdd.model.Result;
+import com.ppdd.model.SecurityUser;
+import com.ppdd.model.UserModel;
 import com.ppdd.service.impl.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -73,15 +75,25 @@ public class AuthSecurityConfig  {
             response.setCharacterEncoding(HttpConstants.UTF_8);
             //使用uuid当token
             String token = UUID.randomUUID().toString();
-            //从securityContext中获取用户信息
+            // 从SecurityUser中提取业务信息，构建UserModel
+            SecurityUser securityUser = (SecurityUser) authentication.getPrincipal();
+            UserModel userDTO = new UserModel(
+                    securityUser.getUserId(),
+                    securityUser.getUsername(),
+                    securityUser.getStatus(),
+                    securityUser.getShopId(),
+                    securityUser.getLoginType(),
+                    securityUser.getPermissions()
+            );
             //转换成json
             ObjectMapper objectMapper = new ObjectMapper();
-            String json = objectMapper.writeValueAsString(authentication.getPrincipal());
+            String json = objectMapper.writeValueAsString(userDTO);
+
             //将token当成key,json当成value保存到redis中
             redisTemplate.opsForValue()
                     .set(AuthConstants.LOGIN_TOKEN_PREFIX+token
                             , json
-                            , Duration.ofHours(AuthConstants.TokenExpire));
+                            , Duration.ofSeconds(AuthConstants.TokenExpire));
             //返回token给前端
             LoginResult loginResult = new LoginResult(token, AuthConstants.TokenExpire);
             PrintWriter writer = response.getWriter();

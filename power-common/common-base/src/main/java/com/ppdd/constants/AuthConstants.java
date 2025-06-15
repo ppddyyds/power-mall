@@ -4,7 +4,7 @@ package com.ppdd.constants;
 public interface AuthConstants {
 
     String AUTH_HEADER = "Authorization";
-    String AUTH_TOKEN_TYPE = "bearer";
+    String AUTH_TOKEN_TYPE = "bearer ";
     /**
      * token 值存放在redis中的前缀
      */
@@ -16,4 +16,6 @@ public interface AuthConstants {
     String SYS_USER_LOGIN="sysUserLogin";
     String MEMBER_LOGIN="memberLogin";
     Long TokenExpire = 60 * 60 * 24L;
+    //token过期阈值
+    Long TOKEN_THRESHOLD = 60 * 60 * 2L;
 }
