@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class LoginResult {
 
     @Schema(description="token")
-    private String token;
+    private String accessToken;
     @Schema(description="有效时长")
     private Long expire;
 

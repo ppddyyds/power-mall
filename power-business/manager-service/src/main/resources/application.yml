@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: manager-service
+  config:
+    import: nacos:manager-service-dev.yml,nacos:application-dev.yml
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      discovery:
+        namespace: 56c7fa93-47cc-4635-86bd-ec095e0af244
+        group: A_GROUP
+        service: ${spring.application.name}
+      config:
+        namespace: 56c7fa93-47cc-4635-86bd-ec095e0af244
+        group: A_GROUP
+        prefix: ${spring.application.name}
+        file-extension: yml
+  profiles:
+    active: dev
+
+    #=========nacos=========
+#server:
+#  port: 8081
